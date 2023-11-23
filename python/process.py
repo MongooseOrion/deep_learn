@@ -334,8 +334,8 @@ def simple():
 
 # 将 train.txt 的数据按行打乱  
 def index():
-    file_path = 'C:\\Users\\smn90\\repo\\FPGA-Image-Recognition\\dataset\\train_extract.txt'
-    new_path = 'C:\\Users\\smn90\\repo\\FPGA-Image-Recognition\\dataset\\train_new_3.txt'
+    file_path = 'C:\\Users\\smn90\\repo\\deep_learn\\object_recog\\train_file\\VOC2007\\2007_train.txt'
+    new_path = 'C:\\Users\\smn90\\repo\\deep_learn\\object_recog\\train_file\\VOC2007\\2007_train_random.txt'
     with open(file_path, 'r') as f:
         lines = f.readlines()
 
@@ -359,4 +359,4 @@ def index():
 #txt_veri()
 #resize_and_pad()
 #simple()
-#index()
+index()
