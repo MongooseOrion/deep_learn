@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import cv2
 
 # 加载 MNIST 数据集
 mnist = tf.keras.datasets.mnist
@@ -42,11 +43,20 @@ elif mode == 1:
                         metrics=['accuracy'])
 
     # 使用加载的模型进行预测
-    predictions = loaded_model.predict(np.expand_dims(x_test[0], axis=0))
+    test_data = x_test[17:40]
+    print(f'actual_labels is {y_test[17:40].tolist()}')
+    predictions = loaded_model.predict(test_data)
 
     # 按顺序依次打印预测结果
+    predicted_label_mat = []
     for i, prediction in enumerate(predictions):
         predicted_label = np.argmax(prediction)
-        actual_label = y_test[i]
         confidence = np.max(prediction)
-        print(f"Image {i}: Predicted label is {predicted_label}, Actual label is {actual_label}, confidence is {confidence:.2f}")
+        predicted_label_mat.append(predicted_label)
+        #print(f"Image {i}: Predicted label is {predicted_label}, confidence is {confidence:.2f}")
+    
+    print(f'predic_labels is {predicted_label_mat}')
+
+    # 显示图片
+    #cv2.imshow('Image', x_test[2])
+    #cv2.waitKey(0)
